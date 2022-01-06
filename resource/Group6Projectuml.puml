@@ -1,0 +1,897 @@
+@startuml
+class admin.student_panel.Student_view_panel {
++ Student_view_toppanel ptop
++ Student_view_middlepanel pmid
++ void actionPerformed(ActionEvent)
+}
+class student.menu_panel.Menu_mid_rightcorner_panel {
++ CircularProgressBar gpa
++ void update_gpa()
+}
+class student.class_panel.Class_panel {
++ JPanel ptop
++ JPanel pmid
+}
+class admin.info_panel.info_right_minipanel {
++ JTextField ffname
++ JTextField flname
++ JTextField fusername
++ JTextField fpassword
+}
+class student.menu_panel.Menu_panel {
+~ {static} GridBagLayout gbl
++ Menu_mid_panel p2
+}
+class admin.info_panel.Info_panel {
++ info_pleft infoPleft
++ info_pright infoPright
++ void actionPerformed(ActionEvent)
+}
+class prototype.ava_panel {
+- BufferedImage avatar
+# void paintComponent(Graphics)
+}
+class admin.schoolyear_panel.Student_table {
+~ JTable table
+}
+class lgScreen.main {
++ {static} Frame frame
++ {static} Connection conn
++ {static} ResultSet rs_user
++ {static} ExecuteSQL exe
++ {static} void main(String[])
+- {static} void showUserInfo(ResultSet)
+}
+class admin.admin_panel {
+~ JPanel p1
+~ Color c1
+~ Color c2
+- int button_posy
+- int index
+~ {static} CardLayout cl
+~ GridBagLayout gbl
+~ GridBagConstraints gbc
++ {static} Menu_panel menu_panel
+~ Student_view_panel student_view_panel
+~ Student_edit_panel student_edit_panel
+~ Student_insert_panel student_insert_panel
+~ Teacher_view_panel teacher_view_panel
+~ Teacher_edit_panel teacher_edit_panel
+~ Teacher_insert_panel teacher_insert_panel
++ {static} Class_panel class_panel
++ {static} Department_student_panel department_student_panel
++ {static} Department_teacher_panel department_teacher_panel
++ {static} Schoolyear_panel schoolyear_panel
+~ Info_panel info_panel
+~ rounded_button menu_button
+~ rounded_button student_button
+~ rounded_button teacher_button
+~ rounded_button class_button
+~ rounded_button department_button
+~ rounded_button schoolyear_button
+~ rounded_button info_button
+~ rounded_button[] rbt
+~ option_panel op
+~ option_student_teacherpanel op_st
+~ boolean optionpanel_opened
++ void init()
++ top_panel getToppanel()
++ void actionPerformed(ActionEvent)
++ void mouseClicked(MouseEvent)
++ void mousePressed(MouseEvent)
++ void mouseReleased(MouseEvent)
++ void mouseEntered(MouseEvent)
++ void mouseExited(MouseEvent)
++ void removeTheother(Container,ActionEvent,JPanel)
++ void removeObject(Container,Component)
++ int checkin(rounded_button)
+}
+class admin.department_panel.Department_student_middle_panel {
++ ArrayList<String> student_departments
++ ArrayList<rounded_button> studentdepartments_buttons
++ void update()
++ void actionPerformed(ActionEvent)
+}
+class admin.teacher_panel.Teacher_insert_panel {
+~ Teacher_insert_top_panel ptop
+~ Teacher_edit_middle_panel pmid
++ void actionPerformed(ActionEvent)
+}
+class admin.info_panel.info_left_minipanel {
++ JTextField femail
++ JTextField fphone_number
++ JTextField fstatus
++ JTextField fwork_address
+}
+class student.info_panel.student_panel {
+~ rounded_button menu_button
+~ rounded_button class_button
+~ rounded_button info_button
+~ Color c1
+~ Color c2
+~ CardLayout cl
+~ Student_edit_panel student_view_panel
+~ Menu_panel menu_panel
+~ Class_panel class_panel
++ top_panel getToppanel()
++ void actionPerformed(ActionEvent)
+}
+class database_connector.ExecuteSQL {
++ ResultSet searchAdmin(Connection)
++ ResultSet searchStudentlogin(Connection,String)
++ ResultSet searchTeacherlogin(Connection,String)
++ boolean insertStudent(Student,Connection)
++ boolean insertTeacher(Teacher,Connection)
++ ResultSet searchStudent(Connection,int)
++ ResultSet searchTeacher(Connection,String)
++ ResultSet searchTeacher_byusername(Connection,String)
++ ResultSet searchStudent_bySchoolyear(Connection,String)
++ ResultSet searchStudent_byMajor(Connection,String)
++ ResultSet searchStudent_byMajorandSchoolYear(Connection,String,String)
++ ResultSet searchStudent_byDepartment(Connection,String)
++ ResultSet searchTeacher_byDepartment(Connection,String)
++ boolean updateStudent(Student,Connection,int)
++ boolean updateTeacher(Teacher,Connection,String)
++ boolean updateAdmin(Connection,Admin)
++ boolean deleteStudent(int,Connection)
++ boolean deleteTeacher(String,Connection)
++ ResultSet distinctSchoolyear(Connection)
++ ResultSet departmentdistinct_student(Connection)
++ ResultSet departmentdítinct_teacher(Connection)
++ float getAveGPA(Connection)
++ int student_count(Connection)
++ int teacher_count(Connection)
++ int major_count(Connection)
++ int deppartment_count(Connection)
++ ResultSet majordistinct_student(Connection)
+}
+class prototype.option_panel {
++ rounded_button view_button
++ rounded_button edit_button
+~ Color c1
+~ Color c2
+}
+class admin.schoolyear_panel.Schoolyear_panel {
++ Schoolyear_mid_panel pmid
+}
+class mainScreen.Button_panel {
+~ rounded_button b1
+}
+class admin.student_panel.Student_view_middlepanel {
++ Student_view_mini_middel_panel mini_middel_panel
+}
+class lgScreen.Frame {
+~ {static} JPanel constpanel
++ {static} login_screen loginScreen
++ admin_panel adminPanel
++ {static} student_panel studentPanel
++ {static} teacher_panel teacherPanel
++ {static} CardLayout cl
++ void actionPerformed(ActionEvent)
+}
+class database_connector.ConnectionUtils {
+- {static} String hostName
+- {static} String dbName
+- {static} String userName
+- {static} String password
+- {static} String connectionURL
++ {static} Connection openConnection()
+}
+class admin.teacher_panel.Teacher_view_middlepanel {
++ Teacher_view_mini_middel_panel mini_middel_panel
+}
+class admin.menu_panel.Menu_panel {
+~ {static} GridBagLayout gbl
++ Menu_mid_panel p2
+}
+class prototype.rounded_panel {
+- Color backgroundColor
+- int cornerRadius
+# void paintComponent(Graphics)
+}
+class teacher.info_panel.Teacher_edit_top_panel {
+~ rounded_button save
+~ rounded_button discard
+~ rounded_button search
+}
+class mainScreen.middle_panel {
++ JPanel buttoncenter_panel
++ rounded_panel view_panel
+}
+class admin.info_panel.info_pright {
++ info_right_minipanel pright
+}
+class admin.Admin {
+- String firstname
+- String lastname
+- String email
+- String address
+- String phone_number
+- String username
+- String password
+- String status
++ String getFirstname()
++ void setFirstname(String)
++ String getLastname()
++ void setLastname(String)
++ String getEmail()
++ void setEmail(String)
++ String getAddress()
++ void setAddress(String)
++ String getPhone_number()
++ void setPhone_number(String)
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ String getStatus()
++ void setStatus(String)
+}
+class lgScreen.login_zone {
+~ BufferedImage ava
+}
+class prototype.CircularProgressBar {
+~ float gpa
+~ float value
+~ int radian
++ float getGpa()
++ void setGpa(float)
++ void paint(Graphics)
+}
+class teacher.menu_panel.Menu_mid_rightcorner_panel {
++ CircularProgressBar gpa
++ void update_gpa()
+}
+class teacher.info_panel.Teacher_edit_leftcorner_panel {
++ JTextField fname
++ JTextField fdob
++ JTextField fgender
++ JTextField fhometown
++ JTextField faddress
++ JTextField freligion
++ JTextField fethnic
++ JTextField fiD_number
+}
+class admin.info_panel.info_pleft {
++ info_left_minipanel pleft
++ rounded_button save_button
+}
+class student.info_panel.Student_edit_rightcorner_panel {
++ JTextField fiD_number
++ JTextField fstatus
++ JTextField fstudent_id
++ JTextField fdepartment
++ JTextField fmajor
++ JTextField fschool_year
++ JTextField fgpa
++ JTextField fusername
++ JTextField fpassword
+}
+class mainScreen.container {
+}
+class student.menu_panel.Menu_mid_panel {
++ Menu_mid_leftcorner_panel lpanel
++ Menu_mid_rightcorner_panel rpanel
+}
+class admin.student_panel.Student_panel {
+}
+class admin.student_panel.Student_edit_leftcorner_panel {
++ JTextField fname
++ JTextField fdob
++ JTextField fgender
++ JTextField fhometown
++ JTextField faddress
++ JTextField freligion
++ JTextField fethnic
++ JTextField femail
++ JTextField fphonenumber
+}
+class mainScreen.top_panel {
++ JLabel username_label
++ rounded_button exit
++ rounded_button log_out
++ void actionPerformed(ActionEvent)
+}
+class teacher.menu_panel.Menu_mid_leftcorner_panel {
++ JLabel total_student
++ JLabel total_teacher
++ JLabel total_department
++ JLabel total_major
++ void update()
+}
+class admin.schoolyear_panel.Schoolyear_mid_panel {
++ ArrayList<String> student_year
++ ArrayList<rounded_button> studentyear_buttons
++ void update()
++ void actionPerformed(ActionEvent)
+}
+class student.info_panel.Student_edit_middle_panel {
++ Student_edit_leftcorner_panel lpanel
++ Student_edit_rightcorner_panel rpanel
+}
+class student.Info_panel {
+}
+class admin.teacher_panel.Teacher_edit_rightcorner_panel {
++ JTextField fstatus
++ JTextField fdepartment
++ JTextField fqualification
++ JTextField fusername
++ JTextField fpassword
++ JTextField femail
++ JTextField fphonenumber
+}
+class teacher.teacher_panel {
+- int button_width
+~ rounded_button menu_button
+~ rounded_button class_button
+~ rounded_button info_button
+~ Color c1
+~ Color c2
+~ CardLayout cl
+~ Teacher_edit_panel teacher_edit_panel
+~ Menu_panel menu_panel
+~ Class_panel class_panel
++ top_panel getToppanel()
++ void actionPerformed(ActionEvent)
+}
+class admin.student_panel.Student_leftcorner_panel {
++ JTextField fname
++ JTextField fdob
++ JTextField fgender
++ JTextField fhometown
++ JTextField faddress
++ JTextField femail
++ JTextField fphonenumber
+}
+class admin.teacher_panel.Teacher_view_toppanel {
++ rounded_button find
++ rounded_button delete
++ textfield_type getId
++ void actionPerformed(ActionEvent)
+}
+class admin.teacher_panel.Teacher_view_panel {
++ Teacher_view_toppanel ptop
++ Teacher_view_middlepanel pmid
++ void actionPerformed(ActionEvent)
+}
+class admin.teacher_panel.Teacher_edit_middle_panel {
++ Teacher_edit_leftcorner_panel lpanel
++ Teacher_edit_rightcorner_panel rpanel
+}
+class teacher.Teacher {
+- String firstname
+- String lastname
+- String gender
+- String email
+- String ethnic_group
+- String id_number
+- String address
+- String religion
+- String department
+- String phone_number
+- String username
+- String password
+- String status
+- String teaching_class
+- String qualification
+- String extra_notes
+- Date date_of_birth
+- String hometown
++ Date getDate_of_birth()
++ void setDate_of_birth(Date)
++ String getHometown()
++ void setHometown(String)
++ String getFirstname()
++ void setFirstname(String)
++ String getLastname()
++ void setLastname(String)
++ String getGender()
++ void setGender(String)
++ String getEmail()
++ void setEmail(String)
++ String getEthnic_group()
++ void setEthnic_group(String)
++ String getId_number()
++ void setId_number(String)
++ String getAddress()
++ void setAddress(String)
++ String getReligion()
++ void setReligion(String)
++ String getDepartment()
++ void setDepartment(String)
++ String getPhone_number()
++ void setPhone_number(String)
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ String getStatus()
++ void setStatus(String)
++ String getTeaching_class()
++ void setTeaching_class(String)
++ String getQualification()
++ void setQualification(String)
++ String getExtra_notes()
++ void setExtra_notes(String)
+}
+class admin.class_panel.Class_mid_panel {
++ ArrayList<String> student_major
++ ArrayList<rounded_button> studentmajor_buttons
+~ GridBagLayout gbl
+~ GridBagConstraints gbc
++ void update()
++ void actionPerformed(ActionEvent)
+}
+class student.class_panel.Student_table {
+~ JTable table
+}
+class admin.teacher_panel.Teacher_leftcorner_panel {
++ JTextField fname
++ JTextField fdob
++ JTextField fgender
++ JTextField fhometown
++ JTextField faddress
++ JTextField femail
++ JTextField fphone_number
+}
+class prototype.logo_longpanel {
+- BufferedImage logo
+# void paintComponent(Graphics)
+}
+class admin.student_panel.Student_insert_top_panel {
+~ rounded_button save
+~ rounded_button discard
+~ rounded_button insert
+}
+class student.info_panel.Student_edit_panel {
++ Student_edit_top_panel ptop
++ Student_edit_middle_panel pmid
++ void actionPerformed(ActionEvent)
+}
+class admin.department_panel.Department_teacher_panel {
++ Department_teacher_middle_panel pmid
++ void schoolyear_count()
+}
+class admin.teacher_panel.Teacher_rightcorner_panel {
++ JTextField fethnic
++ JTextField freligion
++ JTextField fdepartment
++ JTextField fqualification
++ JTextField fusername
++ JTextField fpassword
+}
+class admin.student_panel.Student_edit_rightcorner_panel {
++ JTextField fiD_number
++ JTextField fstatus
++ JTextField fstudent_id
++ JTextField fdepartment
++ JTextField fmajor
++ JTextField fschool_year
++ JTextField fgpa
++ JTextField fusername
++ JTextField fpassword
+}
+class admin.student_panel.Student_view_toppanel {
++ rounded_button find
++ rounded_button delete
++ textfield_type getId
++ void actionPerformed(ActionEvent)
+}
+class admin.department_panel.Department_student_panel {
++ Department_student_middle_panel pmid
++ void schoolyear_count()
+}
+class admin.teacher_panel.Teacher_view_mini_middel_panel {
++ Teacher_leftcorner_panel leftcorner_panel
++ Teacher_rightcorner_panel rightcorner_panel
++ rounded_button insert_button
+}
+class teacher.menu_panel.Menu_top_panel {
++ void actionPerformed(ActionEvent)
+}
+class admin.teacher_panel.Teacher_panel {
+}
+class teacher.info_panel.Teacher_edit_panel {
++ Teacher_edit_top_panel ptop
++ Teacher_edit_middle_panel pmid
++ void actionPerformed(ActionEvent)
+}
+class admin.student_panel.Student_edit_top_panel {
+~ rounded_button save
+~ rounded_button discard
+~ rounded_button search
+~ textfield_type getId
+}
+class admin.teacher_panel.Teacher_edit_leftcorner_panel {
++ JTextField fname
++ JTextField fdob
++ JTextField fgender
++ JTextField fhometown
++ JTextField faddress
++ JTextField freligion
++ JTextField fethnic
++ JTextField fiD_number
+}
+class admin.teacher_panel.Teacher_insert_top_panel {
+~ rounded_button save
+~ rounded_button discard
+~ rounded_button insert
+}
+class admin.student_panel.Student_edit_middle_panel {
++ Student_edit_leftcorner_panel lpanel
++ Student_edit_rightcorner_panel rpanel
+}
+class teacher.info_panel.Teacher_edit_middle_panel {
++ Teacher_edit_leftcorner_panel lpanel
++ Teacher_edit_rightcorner_panel rpanel
+}
+class admin.menu_panel.Menu_top_panel {
++ void actionPerformed(ActionEvent)
+}
+class admin.menu_panel.Menu_mid_leftcorner_panel {
++ JLabel total_student
++ JLabel total_teacher
++ JLabel total_department
++ JLabel total_major
++ void update()
+}
+class admin.menu_panel.Menu_mid_rightcorner_panel {
++ CircularProgressBar gpa
++ void update_gpa()
+}
+class lgScreen.Button_panel {
+~ rounded_button signin
+~ rounded_button close
+- int clicked
++ int getClicked()
++ void setClicked(int)
+}
+class admin.student_panel.Student_insert_panel {
+~ Student_insert_top_panel ptop
+~ Student_edit_middle_panel pmid
++ void actionPerformed(ActionEvent)
+}
+class student.Student {
+- String firstname
+- String lastname
+- String gender
+- String email
+- String ethnic_group
+- String id_number
+- String address
+- String religion
+- String school_year
+- String major
+- int student_id
+- String department
+- String phone_number
+- String username
+- String password
+- float gpa
+- String status
+- String registered_class
+- String class_completed
+- String extra_notes
+- Date date_of_birth
+- String hometown
++ String getHometown()
++ void setHometown(String)
++ Date getDate_of_birth()
++ void setDate_of_birth(Date)
++ String getFirstname()
++ void setFirstname(String)
++ String getLastname()
++ void setLastname(String)
++ String getGender()
++ void setGender(String)
++ String getEmail()
++ void setEmail(String)
++ String getEthnic_group()
++ void setEthnic_group(String)
++ String getId_number()
++ void setId_number(String)
++ String getAddress()
++ void setAddress(String)
++ String getReligion()
++ void setReligion(String)
++ String getSchool_year()
++ void setSchool_year(String)
++ String getMajor()
++ void setMajor(String)
++ int getStudent_id()
++ void setStudent_id(int)
++ String getDepartment()
++ void setDepartment(String)
++ String getPhone_number()
++ void setPhone_number(String)
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ float getGpa()
++ void setGpa(float)
++ String getStatus()
++ void setStatus(String)
++ String getRegistered_class()
++ void setRegistered_class(String)
++ String getClass_completed()
++ void setClass_completed(String)
++ String getExtra_notes()
++ void setExtra_notes(String)
+}
+class lgScreen.login_panel {
++ textfield_type name_field
++ textfield_type pass_field
+~ JLabel username_label
+~ JLabel password_label
+~ JLabel forgot_pass
+~ Button_panel button_panel
++ void actionPerformed(ActionEvent)
+}
+class admin.student_panel.Student_edit_panel {
++ Student_edit_top_panel ptop
++ Student_edit_middle_panel pmid
++ void actionPerformed(ActionEvent)
+}
+class admin.department_panel.Department_teacher_middle_panel {
++ ArrayList<String> teacher_departments
++ ArrayList<rounded_button> teacherdepartments_buttons
++ void update()
++ void actionPerformed(ActionEvent)
+}
+class prototype.option_student_teacherpanel {
++ rounded_button student_button
++ rounded_button teacher_button
+~ Color c1
+~ Color c2
+}
+class student.info_panel.Student_edit_top_panel {
+~ rounded_button save
+}
+class admin.department_panel.Student_table {
+~ JTable table
+}
+class student.menu_panel.Menu_top_panel {
++ void actionPerformed(ActionEvent)
+}
+class admin.department_panel.Teacher_table {
+~ JTable table
+}
+class admin.teacher_panel.Teacher_edit_panel {
++ Teacher_edit_top_panel ptop
++ Teacher_edit_middle_panel pmid
++ void actionPerformed(ActionEvent)
+}
+class admin.student_panel.Student_rightcorner_panel {
++ JTextField fstudent_id
++ JTextField fdepartment
++ JTextField fmajor
++ JTextField fschool_year
++ JTextField fgpa
++ JTextField fusername
++ JTextField fpassword
+}
+class admin.class_panel.Student_table {
+~ JTable table
+}
+class admin.menu_panel.Menu_mid_panel {
++ Menu_mid_leftcorner_panel lpanel
++ Menu_mid_rightcorner_panel rpanel
+}
+class teacher.menu_panel.Menu_mid_panel {
++ Menu_mid_leftcorner_panel lpanel
++ Menu_mid_rightcorner_panel rpanel
+}
+class student.info_panel.Student_edit_leftcorner_panel {
++ JTextField fname
++ JTextField fdob
++ JTextField fgender
++ JTextField fhometown
++ JTextField faddress
++ JTextField freligion
++ JTextField fethnic
++ JTextField femail
++ JTextField fphonenumber
+}
+class mainScreen.ViewBoard_panel {
+}
+class prototype.rounded_button {
+~ Color color
+~ Color second_color
+- int arc
+- int clicked
+- String name
+~ Shape shape
++ void setArc(int)
+# void paintComponent(Graphics)
+# void paintBorder(Graphics)
++ boolean contains(int,int)
++ int getClicked()
++ void setClicked(int)
++ String getName()
++ void setName(String)
+}
+class teacher.Class_panel {
+}
+class admin.student_panel.Student_view_mini_middel_panel {
++ Student_leftcorner_panel leftcorner_panel
++ Student_rightcorner_panel rightcorner_panel
++ rounded_button insert_button
+}
+class prototype.logo_panel {
+- BufferedImage logo
+# void paintComponent(Graphics)
+}
+class admin.teacher_panel.Teacher_edit_top_panel {
+~ rounded_button save
+~ rounded_button discard
+~ rounded_button search
+~ textfield_type getCMND
+}
+class lgScreen.login_screen {
++ login_zone lg
+- BufferedImage background
+# void paintComponent(Graphics)
+}
+class mainScreen.buttongroup_panel {
+}
+class admin.class_panel.Class_panel {
++ Class_mid_panel pmid
+}
+class student.menu_panel.Menu_mid_leftcorner_panel {
++ JLabel total_student
++ JLabel total_teacher
++ JLabel total_department
++ JLabel total_major
++ void update()
+}
+class mainScreen.mainPanel {
+# middle_panel mid_panel
++ top_panel toppanel
++ top_panel getToppanel()
+# void paintComponent(Graphics)
+}
+class teacher.menu_panel.Menu_panel {
+~ {static} GridBagLayout gbl
++ Menu_mid_panel p2
+}
+class prototype.textfield_type {
+- Shape shape
+# void paintComponent(Graphics)
+# void paintBorder(Graphics)
++ boolean contains(int,int)
+}
+class teacher.info_panel.Teacher_edit_rightcorner_panel {
++ JTextField fstatus
++ JTextField fdepartment
++ JTextField fqualification
++ JTextField fusername
++ JTextField fpassword
++ JTextField femail
++ JTextField fphonenumber
+}
+
+
+java.awt.event.ActionListener <|.. admin.student_panel.Student_view_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_view_panel
+prototype.rounded_panel <|-- student.menu_panel.Menu_mid_rightcorner_panel
+prototype.rounded_panel <|-- student.class_panel.Class_panel
+prototype.rounded_panel <|-- admin.info_panel.info_right_minipanel
+prototype.rounded_panel <|-- student.menu_panel.Menu_panel
+java.awt.event.ActionListener <|.. admin.info_panel.Info_panel
+prototype.rounded_panel <|-- admin.info_panel.Info_panel
+prototype.JPanel <|-- prototype.ava_panel
+admin.schoolyear_panel.JFrame <|-- admin.schoolyear_panel.Student_table
+java.awt.event.ActionListener <|.. admin.admin_panel
+java.awt.event.MouseListener <|.. admin.admin_panel
+mainScreen.mainPanel <|-- admin.admin_panel
+java.awt.event.ActionListener <|.. admin.department_panel.Department_student_middle_panel
+admin.department_panel.JPanel <|-- admin.department_panel.Department_student_middle_panel
+java.awt.event.ActionListener <|.. admin.teacher_panel.Teacher_insert_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_insert_panel
+prototype.rounded_panel <|-- admin.info_panel.info_left_minipanel
+java.awt.event.ActionListener <|.. student.info_panel.student_panel
+mainScreen.mainPanel <|-- student.info_panel.student_panel
+javax.swing.JPanel <|-- prototype.option_panel
+prototype.rounded_panel <|-- admin.schoolyear_panel.Schoolyear_panel
+mainScreen.JPanel <|-- mainScreen.Button_panel
+admin.student_panel.JPanel <|-- admin.student_panel.Student_view_middlepanel
+java.awt.event.ActionListener <|.. lgScreen.Frame
+lgScreen.JFrame <|-- lgScreen.Frame
+admin.teacher_panel.JPanel <|-- admin.teacher_panel.Teacher_view_middlepanel
+prototype.rounded_panel <|-- admin.menu_panel.Menu_panel
+prototype.JPanel <|-- prototype.rounded_panel
+teacher.info_panel.JPanel <|-- teacher.info_panel.Teacher_edit_top_panel
+mainScreen.JPanel <|-- mainScreen.middle_panel
+admin.info_panel.JPanel <|-- admin.info_panel.info_pright
+lgScreen.JPanel <|-- lgScreen.login_zone
+prototype.JPanel <|-- prototype.CircularProgressBar
+prototype.rounded_panel <|-- teacher.menu_panel.Menu_mid_rightcorner_panel
+prototype.rounded_panel <|-- teacher.info_panel.Teacher_edit_leftcorner_panel
+admin.info_panel.JPanel <|-- admin.info_panel.info_pleft
+prototype.rounded_panel <|-- student.info_panel.Student_edit_rightcorner_panel
+mainScreen.JPanel <|-- mainScreen.container
+student.menu_panel.JPanel <|-- student.menu_panel.Menu_mid_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_edit_leftcorner_panel
+java.awt.event.ActionListener <|.. mainScreen.top_panel
+mainScreen.JPanel <|-- mainScreen.top_panel
+prototype.rounded_panel <|-- teacher.menu_panel.Menu_mid_leftcorner_panel
+java.awt.event.ActionListener <|.. admin.schoolyear_panel.Schoolyear_mid_panel
+admin.schoolyear_panel.JPanel <|-- admin.schoolyear_panel.Schoolyear_mid_panel
+student.info_panel.JPanel <|-- student.info_panel.Student_edit_middle_panel
+prototype.rounded_panel <|-- student.Info_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_edit_rightcorner_panel
+java.awt.event.ActionListener <|.. teacher.teacher_panel
+mainScreen.mainPanel <|-- teacher.teacher_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_leftcorner_panel
+java.awt.event.ActionListener <|.. admin.teacher_panel.Teacher_view_toppanel
+admin.teacher_panel.JPanel <|-- admin.teacher_panel.Teacher_view_toppanel
+java.awt.event.ActionListener <|.. admin.teacher_panel.Teacher_view_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_view_panel
+admin.teacher_panel.JPanel <|-- admin.teacher_panel.Teacher_edit_middle_panel
+java.awt.event.ActionListener <|.. admin.class_panel.Class_mid_panel
+admin.class_panel.JPanel <|-- admin.class_panel.Class_mid_panel
+student.class_panel.JPanel <|-- student.class_panel.Student_table
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_leftcorner_panel
+prototype.JPanel <|-- prototype.logo_longpanel
+admin.student_panel.JPanel <|-- admin.student_panel.Student_insert_top_panel
+java.awt.event.ActionListener <|.. student.info_panel.Student_edit_panel
+prototype.rounded_panel <|-- student.info_panel.Student_edit_panel
+prototype.rounded_panel <|-- admin.department_panel.Department_teacher_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_rightcorner_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_edit_rightcorner_panel
+java.awt.event.ActionListener <|.. admin.student_panel.Student_view_toppanel
+admin.student_panel.JPanel <|-- admin.student_panel.Student_view_toppanel
+prototype.rounded_panel <|-- admin.department_panel.Department_student_panel
+admin.teacher_panel.JPanel <|-- admin.teacher_panel.Teacher_view_mini_middel_panel
+java.awt.event.ActionListener <|.. teacher.menu_panel.Menu_top_panel
+teacher.menu_panel.JPanel <|-- teacher.menu_panel.Menu_top_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_panel
+java.awt.event.ActionListener <|.. teacher.info_panel.Teacher_edit_panel
+prototype.rounded_panel <|-- teacher.info_panel.Teacher_edit_panel
+admin.student_panel.JPanel <|-- admin.student_panel.Student_edit_top_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_edit_leftcorner_panel
+admin.teacher_panel.JPanel <|-- admin.teacher_panel.Teacher_insert_top_panel
+admin.student_panel.JPanel <|-- admin.student_panel.Student_edit_middle_panel
+teacher.info_panel.JPanel <|-- teacher.info_panel.Teacher_edit_middle_panel
+java.awt.event.ActionListener <|.. admin.menu_panel.Menu_top_panel
+admin.menu_panel.JPanel <|-- admin.menu_panel.Menu_top_panel
+prototype.rounded_panel <|-- admin.menu_panel.Menu_mid_leftcorner_panel
+prototype.rounded_panel <|-- admin.menu_panel.Menu_mid_rightcorner_panel
+lgScreen.JPanel <|-- lgScreen.Button_panel
+java.awt.event.ActionListener <|.. admin.student_panel.Student_insert_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_insert_panel
+java.awt.event.ActionListener <|.. lgScreen.login_panel
+prototype.rounded_panel <|-- lgScreen.login_panel
+java.awt.event.ActionListener <|.. admin.student_panel.Student_edit_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_edit_panel
+java.awt.event.ActionListener <|.. admin.department_panel.Department_teacher_middle_panel
+admin.department_panel.JPanel <|-- admin.department_panel.Department_teacher_middle_panel
+prototype.JPanel <|-- prototype.option_student_teacherpanel
+student.info_panel.JPanel <|-- student.info_panel.Student_edit_top_panel
+admin.department_panel.JFrame <|-- admin.department_panel.Student_table
+java.awt.event.ActionListener <|.. student.menu_panel.Menu_top_panel
+student.menu_panel.JPanel <|-- student.menu_panel.Menu_top_panel
+admin.department_panel.JFrame <|-- admin.department_panel.Teacher_table
+java.awt.event.ActionListener <|.. admin.teacher_panel.Teacher_edit_panel
+prototype.rounded_panel <|-- admin.teacher_panel.Teacher_edit_panel
+prototype.rounded_panel <|-- admin.student_panel.Student_rightcorner_panel
+admin.class_panel.JFrame <|-- admin.class_panel.Student_table
+admin.menu_panel.JPanel <|-- admin.menu_panel.Menu_mid_panel
+teacher.menu_panel.JPanel <|-- teacher.menu_panel.Menu_mid_panel
+prototype.rounded_panel <|-- student.info_panel.Student_edit_leftcorner_panel
+prototype.JButton <|-- prototype.rounded_button
+prototype.rounded_panel <|-- teacher.Class_panel
+admin.student_panel.JPanel <|-- admin.student_panel.Student_view_mini_middel_panel
+prototype.JPanel <|-- prototype.logo_panel
+admin.teacher_panel.JPanel <|-- admin.teacher_panel.Teacher_edit_top_panel
+lgScreen.JPanel <|-- lgScreen.login_screen
+mainScreen.JPanel <|-- mainScreen.buttongroup_panel
+prototype.rounded_panel <|-- admin.class_panel.Class_panel
+prototype.rounded_panel <|-- student.menu_panel.Menu_mid_leftcorner_panel
+mainScreen.JPanel <|-- mainScreen.mainPanel
+prototype.rounded_panel <|-- teacher.menu_panel.Menu_panel
+prototype.JTextField <|-- prototype.textfield_type
+prototype.rounded_panel <|-- teacher.info_panel.Teacher_edit_rightcorner_panel
+@enduml
